@@ -228,7 +228,7 @@
 						if ($settings?.notificationEnabled ?? false) {
 							new Notification(`${title} | Open WebUI`, {
 								body: content,
-								icon: `$/static/favicon.png`
+								icon: `/static/favicon.png`
 							});
 						}
 					}
@@ -287,7 +287,7 @@
 					if ($settings?.notificationEnabled ?? false) {
 						new Notification(`${data?.user?.name} (#${event?.channel?.name}) | Open WebUI`, {
 							body: data?.content,
-							icon: data?.user?.profile_image_url ?? `$/static/favicon.png`
+							icon: data?.user?.profile_image_url ?? `/static/favicon.png`
 						});
 					}
 				}

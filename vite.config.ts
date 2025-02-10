@@ -5,9 +5,18 @@ import { sveltekit } from "@sveltejs/kit/vite";
 const host = process.env.TAURI_DEV_HOST;
 
 // https://vitejs.dev/config/
-export default defineConfig(async () => ({
+export default defineConfig({
   plugins: [sveltekit()],
-
+  define: {
+    APP_VERSION: JSON.stringify(process.env.npm_package_version),
+    APP_BUILD_HASH: JSON.stringify(process.env.APP_BUILD_HASH || "dev-build"),
+  },
+  build: {
+    sourcemap: true,
+  },
+  worker: {
+    format: "es",
+  },
   // Vite options tailored for Tauri development and only applied in `tauri dev` or `tauri build`
   //
   // 1. prevent vite from obscuring rust errors
@@ -29,4 +38,4 @@ export default defineConfig(async () => ({
       ignored: ["**/src-tauri/**"],
     },
   },
-}));
+});
