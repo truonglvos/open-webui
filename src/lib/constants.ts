@@ -1,20 +1,26 @@
-import { browser, dev } from '$app/environment';
-// import { version } from '../../package.json';
+import { dev } from '$app/environment';
+import { platform } from "@tauri-apps/plugin-os";
+
+declare var APP_VERSION: string;
+declare var APP_BUILD_HASH: string;
+
+const OS_OBJ = (window as any).__TAURI__?.os;
+
+export const REAL_ENVIRONMENT = (OS_OBJ
+  ? platform()
+  : "browser");
+
+console.log("REAL_ENVIRONMENT", REAL_ENVIRONMENT);
 
 export const APP_NAME = 'Open WebUI';
-export const APP_VERSION = '1.0.0';
-export const APP_BUILD_HASH = '23232332'
 
-export const WEBUI_HOSTNAME = browser
-  ? dev
-    ? `localhost:8080`
-    : `localhost:8080`
-  : "localhost:8080";
-export const WEBUI_BASE_URL = browser
-  ? dev
-    ? `http://${WEBUI_HOSTNAME}`
-    : `localhost:8080`
-  : `localhost:8080`;
+const BE_URL =
+  REAL_ENVIRONMENT === "android"
+    ? import.meta.env.VITE_BE_URL_ANDROID
+    : import.meta.env.VITE_BE_URL_COMMON;
+
+export const WEBUI_HOSTNAME = dev ? BE_URL : import.meta.env.VITE_BE_URL_PROD;
+export const WEBUI_BASE_URL = WEBUI_HOSTNAME;
 export const WEBUI_API_BASE_URL = `${WEBUI_BASE_URL}/api/v1`;
 
 export const OLLAMA_API_BASE_URL = `${WEBUI_BASE_URL}/ollama`;

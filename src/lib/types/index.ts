@@ -13,3 +13,7 @@ export enum TTS_RESPONSE_SPLIT {
 	PARAGRAPHS = 'paragraphs',
 	NONE = 'none'
 }
+
+export type OsType = "linux" | "windows" | "macos" | "ios" | "android";
+
+export type RealEnvironment = OsType & 'browser'

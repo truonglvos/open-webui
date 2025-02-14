@@ -360,3 +360,7 @@ input[type='number'] {
 .hljs-strong {
 	font-weight: 700;
 }
+
+.h-screen-ios{
+	height: calc(100vh - 3rem);
+}

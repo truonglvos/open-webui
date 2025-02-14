@@ -39,7 +39,7 @@
 
 	import 'tippy.js/dist/tippy.css';
 
-	import { WEBUI_BASE_URL, WEBUI_HOSTNAME } from '$lib/constants';
+	import { WEBUI_BASE_URL, WEBUI_HOSTNAME, REAL_ENVIRONMENT } from '$lib/constants';
 	import i18n, { initI18n, getLanguages } from '$lib/i18n';
 	import { bestMatchingLanguage } from '$lib/utils';
 	import { getAllTags, getChatList } from '$lib/apis/chats';
@@ -461,6 +461,7 @@
 			window.removeEventListener('resize', onResize);
 		};
 	});
+
 </script>
 
 <svelte:head>
@@ -475,15 +476,18 @@
 
 {#if loaded}
 	{#if $isApp}
-		<div class="flex flex-row h-screen">
-			<AppSidebar />
+		<!-- <div class="flex flex-row h-screen"> -->
+			<!-- <AppSidebar /> -->
 
-			<div class="w-full flex-1 max-w-[calc(100%-4.5rem)]">
+			<div class="{REAL_ENVIRONMENT === 'ios' ? 'pt-20': ''} w-full flex-1 h-screen">
+				<span>{REAL_ENVIRONMENT}</span>
 				<slot />
 			</div>
-		</div>
+		<!-- </div> -->
 	{:else}
+	<div class="{REAL_ENVIRONMENT === 'ios' ? 'pt-12': ''} w-full flex-1">
 		<slot />
+		</div>
 	{/if}
 {/if}
 

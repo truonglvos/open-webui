@@ -12,7 +12,7 @@ export const config: Writable<Config | undefined> = writable(undefined);
 export const user: Writable<SessionUser | undefined> = writable(undefined);
 
 // Electron App
-export const isApp = writable(true);
+export const isApp = writable(false);
 export const appInfo = writable(null);
 export const appData = writable(null);
 

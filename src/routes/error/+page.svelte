@@ -22,8 +22,6 @@
 		<div class="absolute rounded-xl w-full h-full backdrop-blur flex justify-center">
 			<div class="m-auto pb-44 flex flex-col justify-center">
 				<div class="max-w-md">
-					<h1>{WEBUI_BASE_URL}</h1>
-
 					<div class="text-center text-2xl font-medium z-50">
 						{$i18n.t('{{webUIName}} Backend Required', { webUIName: $WEBUI_NAME })}
 					</div>

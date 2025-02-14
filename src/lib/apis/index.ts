@@ -1,5 +1,4 @@
-import { WEBUI_API_BASE_URL, WEBUI_BASE_URL } from '$lib/constants';
-import { fetch } from '@tauri-apps/plugin-http';
+import { WEBUI_BASE_URL } from '$lib/constants';
 
 export const getModels = async (token: string = '', base: boolean = false) => {
 	let error = null;

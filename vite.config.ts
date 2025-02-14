@@ -8,7 +8,7 @@ const host = process.env.TAURI_DEV_HOST;
 export default defineConfig({
   plugins: [sveltekit()],
   define: {
-    APP_VERSION: JSON.stringify(process.env.npm_package_version),
+    APP_VERSION: JSON.stringify(process.env.VITE_API_URL),
     APP_BUILD_HASH: JSON.stringify(process.env.APP_BUILD_HASH || "dev-build"),
   },
   build: {
